@@ -163,8 +163,8 @@ public class FollowPath extends Command {
     }
 
     if (Math.abs(config.getGetInchesTraveledFunction().get()) > 3) {
-      double leftVariation = error * Math.abs(speed) / config.getkP();
-      double rightVariation = error * Math.abs(speed) / config.getkP();
+      double leftVariation = error * Math.abs(speed) * config.getkP();
+      double rightVariation = error * Math.abs(speed) * config.getkP();
 
       double leftSpeed, rightSpeed;
       if (config.isSwapTurningDirection()) {
