@@ -75,7 +75,13 @@ class Robot extends TimedRobot {
 
 It's as easy as that - around five lines of code.
 
-To follow a path, simply run a `FollowPath` command in autonomous or in your command group:
+To follow a path, simply run a `FollowPath` command in autonomous or in your command group.
+FollowPath takes two arguments:
+
+1. A path object
+2. A function of type `Function<Double, Double>` that takes in the percentage completion of the
+path, between 0 and 1, and returns a value to set to your drive train, typically between 0 and 1.
+You can provide this as a lambda.
 
 ```java
 class Robot extends TimedRobot {
@@ -83,12 +89,12 @@ class Robot extends TimedRobot {
     
     // This drives 36 inches in a straight line, driving at 25% speed the first 50% of the path,
     // and 75% speed in the remainder.
+    // x is the percentage completion of the path, between 0 and 1.
     m_autonomousCommand = new FollowPath(
-        PathUtil.createStraightPath(36.0, x -> {
+        PathUtil.createStraightPath(36.0), x -> {
           if (x < 0.5) return 0.25;
           else return 0.75;
-        })
-    );
+        });
     
     // Or another example below:
     
