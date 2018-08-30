@@ -66,6 +66,14 @@ class Robot extends TimedRobot {
 
 It's as easy as that - around five lines of code.
 
+To create a Path, go to the pathing site: http://paths.rpappa.com/
+
+In the "Code" block, click "Old Style". Alter your path in the way that you see fit. Copy to
+clipboard and paste it into your code, like shown below.
+
+One problem that will be fixed in the future: Path site generates a class named `PathSegment`, but
+EasyPath uses a class named `Path`. Simply rename it and it should work.
+
 To follow a path, simply run a `FollowPath` command in autonomous or in your command group:
 
 ```java
