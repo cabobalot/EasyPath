@@ -1,3 +1,4 @@
+import java.util.function.Supplier;
 import javafx.geometry.Point2D;
 
 import java.util.function.Function;
@@ -181,12 +182,14 @@ public class PathUtil {
    * Simple function that estimates total distance traveled by taking the average of the encoder
    * readings on the left and right side of the drive train
    *
-   * @param leftEncoderDistance the distance reading that the left encoder provides, in inches
-   * @param rightEncoderDistance the distance reading that the right encoder provides, in inches
+   * @param getLeftEncoderDistance the function that returns the distance reading that the left
+   * encoder provides, in inches
+   * @param getRightEncoderDistance the function that returns the distance reading that the right
+   * encoder provides, in inches
    * @return the average of leftEncoderDistance and rightEncoderDistance
    */
-  public static double defaultLengthDrivenEstimator(double leftEncoderDistance,
-      double rightEncoderDistance) {
-    return (leftEncoderDistance + rightEncoderDistance) / 2.0;
+  public static double defaultLengthDrivenEstimator(Supplier<Double> getLeftEncoderDistance,
+      Supplier<Double> getRightEncoderDistance) {
+    return (getLeftEncoderDistance.get() + getRightEncoderDistance.get()) / 2.0;
   }
 }
