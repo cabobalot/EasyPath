@@ -11,7 +11,8 @@ EasyPath is a library that allows FRC robots to easily navigate along complex pa
 ### How do I use it?
 Right now, the easiest way is to check out the Releases tab on GitHub and download the latest release of EasyPath. You can search online how to include external jar files or libraries in your project based on your different IDE, [such as Eclipse](https://www.google.com/search?q=eclipse%20include%20external%20jar&oq=eclipse%20include%20external%20jar&aqs=chrome..69i57j0l5.5308j0j7&sourceid=chrome&ie=UTF-8). (In 2019, once FRC moves over to the Gradle build system, you should be able to include it in your project by adding just one line to your `build.gradle` file! Work in progress.)
 
-After you've done that, check out the `Instructions.md` to learn more about how to set it up on your robot.
+After you've done that, check out the [`Instructions.md`](https://github.com/tervay/EasyPath/blob/master/Instructions.md)
+to learn more about how to set it up on your robot.
 
 ### What robots can use this?
 Do you use Java? Do you have at least 1 encoder on your drive train? Do you have a gyro? Do you use a tank drive? If you said yes to all of those questions, you can use EasyPath! And yes -- you saw that right. Even if you only have one encoder on your drive train, you can still use it. We actually developed it with only 1 encoder working.
