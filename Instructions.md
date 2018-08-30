@@ -114,3 +114,17 @@ For more examples, be sure to check out any of these sources:
 * [340's 2018 autos](https://github.com/Greater-Rochester-Robotics/PowerUp2018-340/tree/master/Team340PowerUp2018/src/org/usfirst/frc/team340/robot/commands/auto)
 * [5254's 2018 autos](https://github.com/FRC5254/FRC-5254---BakPak/tree/master/src/org/usfirst/frc/team5254/robot/autocommands)
 * [2791's 2018 autos](https://github.com/Team2791/Robot_2018/tree/Climber/src/org/usfirst/frc/team2791/robot/commands/auto/GrrPaths)
+
+
+## Tuning kP
+
+0.07 should be approximately the kP value that you use - 340, 2791, 5254 all used similar values in
+2018.
+
+I recommend providing it a simple arc, like a center switch auto. While it's driving, look for any
+wobbliness. If it is wobbling, then the kP value is likely too high. If it doesn't turn enough,
+it is likely too low. Finding a sweet spot doesn't take too long, but **your kP will change as you
+change your robot weight.**
+
+In the future, I'll try to add videos of poorly- or well-tuned robots and what their behaviors look
+like.
