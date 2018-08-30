@@ -163,10 +163,24 @@ public class FollowPath extends Command {
     }
 
     if (Math.abs(config.getGetInchesTraveledFunction().get()) > 3) {
-      config.getSetLeftRightDriveSpeedFunction().accept(
-          speed + (error * Math.abs(speed) / config.getkP()),
-          speed - (error * Math.abs(speed) / config.getkP())
-      );
+      double leftVariation = error * Math.abs(speed) / config.getkP();
+      double rightVariation = error * Math.abs(speed) / config.getkP();
+
+      double leftSpeed, rightSpeed;
+      if (config.isSwapTurningDirection()) {
+        leftSpeed = speed - leftVariation;
+        rightSpeed = speed + rightVariation;
+      } else {
+        leftSpeed = speed + leftVariation;
+        rightSpeed = speed - rightVariation;
+      }
+
+      if (config.isSwapDrivingDirection()) {
+        leftSpeed *= -1;
+        rightSpeed *= -1;
+      }
+
+      config.getSetLeftRightDriveSpeedFunction().accept(leftSpeed, rightSpeed);
     } else {
       config.getSetLeftRightDriveSpeedFunction().accept(speed, speed);
     }

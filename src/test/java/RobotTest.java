@@ -70,6 +70,9 @@ public class RobotTest {
         0.07
     );
 
+    config.setSwapDrivingDirection(true);
+    config.setSwapTurningDirection(true);
+
     EasyPath.configure(config);
 
     new FollowPath(PathUtil.createStraightPath(5.0), x -> {

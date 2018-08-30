@@ -10,6 +10,9 @@ public class EasyPathConfig {
   private Runnable resetEncodersFunction;
   private double kP;
 
+  private boolean swapTurningDirection;
+  private boolean swapDrivingDirection;
+
   /**
    * A configuration object that represents your drive train's controls. If you are unsure of how to
    * reference functions as a Java parameter/argument, please see the example code that is linked in
@@ -117,4 +120,47 @@ public class EasyPathConfig {
   public Runnable getShiftDriveTrainFunction() {
     return shiftDriveTrainFunction;
   }
+
+  /**
+   * Tell EasyPath to swap the direction that it turns/arcs. Since sometimes you might wire
+   * something backwards, you can use this to fix it if you want (or if EasyPath has a wrong
+   * negative sign somewhere...).
+   *
+   * @param swapTurningDirection whether or not to turn/arc in the opposite direction as normal
+   */
+  public void setSwapTurningDirection(boolean swapTurningDirection) {
+    this.swapTurningDirection = swapTurningDirection;
+  }
+
+  /**
+   * Tell EasyPath to swap the direction that it drives forwards. Sometimes you might wire something
+   * backwards, or EasyPath might have a stray negative sign lying around.
+   *
+   * @param swapDrivingDirection whether or not to drive forwards in the opposite direction as
+   * normal
+   */
+  public void setSwapDrivingDirection(boolean swapDrivingDirection) {
+    this.swapDrivingDirection = swapDrivingDirection;
+  }
+
+
+  /**
+   * Getter for configuration option swapTurningDirection.
+   *
+   * @return true if EasyPath should turn/arc in the opposite direction as normal, false otherwise.
+   */
+  public boolean isSwapTurningDirection() {
+    return swapTurningDirection;
+  }
+
+  /**
+   * Getter for configuration option swapDrivingDirection.
+   *
+   * @return true if EasyPath should drive "forwards" in the opposite direction as normal, false
+   * otherwise.
+   */
+  public boolean isSwapDrivingDirection() {
+    return swapDrivingDirection;
+  }
+
 }
