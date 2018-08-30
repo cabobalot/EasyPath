@@ -144,7 +144,7 @@ public class FollowPath extends Command {
    */
   @Override
   protected void initialize() {
-    EasyPath.getConfig().getResetEncodersFunction().run();
+    EasyPath.getConfig().getResetEncodersAndGyroFunction().run();
   }
 
   /**

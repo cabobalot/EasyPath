@@ -30,6 +30,9 @@ class Gyro {
   double getAngle() {
     return 180.0;
   }
+
+  void reset() {
+  }
 }
 
 class DriveTrain {
@@ -54,6 +57,7 @@ class DriveTrain {
   void reset() {
     this.leftEnc.reset();
     this.rightEnc.reset();
+    this.gyro.reset();
   }
 }
 

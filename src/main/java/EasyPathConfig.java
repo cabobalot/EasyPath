@@ -26,8 +26,9 @@ public class EasyPathConfig {
    * with the two values of your encoders.
    * @param getCurrentAngleFunction the function that returns a double that represents the current
    * angle of the robot, from 0 degrees to 360 degrees.
-   * @param resetEncodersFunction the function that takes no arguments and returns nothing, and
-   * resets your encoders and/or your gyro (if necessary)
+   * @param resetEncodersAndGyroFunction the function that takes no arguments and returns nothing,
+   * and resets your encoders and your gyro. You MUST reset your gyro heading to 0 between every
+   * path.
    * @param kP the kP value used to tune the control loop. Please see the tuning section in the
    * readme for more details on tuning.
    */
@@ -35,11 +36,11 @@ public class EasyPathConfig {
       BiConsumer<Double, Double> setLeftRightDriveSpeedFunction,
       Supplier<Double> getInchesTraveledFunction,
       Supplier<Double> getCurrentAngleFunction,
-      Runnable resetEncodersFunction,
+      Runnable resetEncodersAndGyroFunction,
       double kP
   ) {
     this(setLeftRightDriveSpeedFunction, getInchesTraveledFunction, getCurrentAngleFunction,
-        resetEncodersFunction, () -> {
+        resetEncodersAndGyroFunction, () -> {
         }, kP);
   }
 
@@ -58,8 +59,9 @@ public class EasyPathConfig {
    * angle of the robot, from 0 degrees to 360 degrees.
    * @param shiftDriveTrainFunction the function that takes no arguments and returns nothing, and
    * shifts your drive train into high gear. Use the other constructor if you do not shift.
-   * @param resetEncodersFunction the function that takes no arguments and returns nothing, and
-   * resets your encoders and/or your gyro (if necessary)
+   * @param resetEncodersAndGyroFunction the function that takes no arguments and returns nothing,
+   * and resets your encoders and your gyro. You MUST reset your gyro heading to 0 between every
+   * path.
    * @param kP the kP value used to tune the control loop. Please see the tuning section in the
    * readme for more details on tuning.
    */
@@ -68,14 +70,14 @@ public class EasyPathConfig {
       Supplier<Double> getInchesTraveledFunction,
       Supplier<Double> getCurrentAngleFunction,
       Runnable shiftDriveTrainFunction,
-      Runnable resetEncodersFunction,
+      Runnable resetEncodersAndGyroFunction,
       double kP
   ) {
     this.setLeftRightDriveSpeedFunction = setLeftRightDriveSpeedFunction;
     this.getInchesTraveledFunction = getInchesTraveledFunction;
     this.getCurrentAngleFunction = getCurrentAngleFunction;
     this.shiftDriveTrainFunction = shiftDriveTrainFunction;
-    this.resetEncodersFunction = resetEncodersFunction;
+    this.resetEncodersFunction = resetEncodersAndGyroFunction;
     this.kP = kP;
   }
 
@@ -101,9 +103,10 @@ public class EasyPathConfig {
   }
 
   /**
-   * @return the function that resets the encoders of the robot
+   * @return the function that resets the encoders and gyro of the robot. This MUST reset the gyro
+   * to zero.
    */
-  public Runnable getResetEncodersFunction() {
+  public Runnable getResetEncodersAndGyroFunction() {
     return resetEncodersFunction;
   }
 

@@ -11,6 +11,14 @@ EasyPath uses a class named `Path`. Simply rename `PathSegment` to `Path` and it
 
 ----
 
+### Field-relative or robot-relative?
+
+EasyPath is **robot-relative**. This means you MUST provide EasyPath a way to reset your gyro's
+heading to zero. Either that, or you must manually reset the gyro heading to zero after every path
+that you run.
+
+----
+
 Following a straight path is easy:
 
 ```java

@@ -8,7 +8,7 @@ You have to provide EasyPath a few different things in order for it to work:
 1. A function to set the left and right speeds of your drive train
 2. A function that gives EasyPath the total inches traveled of your robot
 3. A function that gives EasyPath the current heading of your robot, from 0 to 360
-4. A function that resets your encoders to zero
+4. A function that resets your encoders to zero and the gyro heading of your robot to zero
 5. A P value for the P loop that EasyPath uses in order to control your robot
 
 In the future, I hope to allow the user to provide a function that allows EasyPath to shift your
@@ -40,6 +40,7 @@ class DriveTrain {
   void reset() {
     this.leftEnc.reset();
     this.rightEnc.reset();
+    this.gyro.reset();
   }
 }
 ```
