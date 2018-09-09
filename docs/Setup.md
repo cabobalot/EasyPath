@@ -123,3 +123,5 @@ For more examples, be sure to check out any of these sources:
 * [5254's 2018 autos](https://github.com/FRC5254/FRC-5254---BakPak/tree/master/src/org/usfirst/frc/team5254/robot/autocommands)
 * [2791's 2018 autos](https://github.com/Team2791/Robot_2018/tree/Climber/src/org/usfirst/frc/team2791/robot/commands/auto/GrrPaths)
 
+Please read [**all of the docs**](https://github.com/tervay/EasyPath/tree/master/docs) associated with
+the project.
