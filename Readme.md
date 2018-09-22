@@ -8,8 +8,12 @@
 ### What is this?
 EasyPath is a library that allows FRC robots to easily navigate along complex paths during the autonomous period of play. It's dead simple and can often be set up in less than 30 minutes.
 
-### How do I use it?
-Right now, the easiest way is to check out the Releases tab on GitHub and download the latest release of EasyPath. You can search online how to include external jar files or libraries in your project based on your different IDE, [such as Eclipse](https://www.google.com/search?q=eclipse%20include%20external%20jar&oq=eclipse%20include%20external%20jar&aqs=chrome..69i57j0l5.5308j0j7&sourceid=chrome&ie=UTF-8). (In 2019, once FRC moves over to the Gradle build system, you should be able to include it in your project by adding just one line to your `build.gradle` file! Work in progress.)
+### How do I use it? 
+**For 2018** - Download the latest `.jar` file in the releases tab and put the `.jar` file in the directory for 3rd party libraries,
+typically located at `C:\Users\<USERNAME>\wpilib\user\java\lib`. Make sure you tell eclipse about it,
+which [you can search for easily online](https://www.google.com/search?q=eclipse+include+external+jar&oq=eclipse+include+ext&aqs=chrome.0.35i39j69i57j0l4.2350j0j7&sourceid=chrome&ie=UTF-8).
+
+**For 2019** - t.b.d. Check back in a bit!
 
 After you've done that, check out the setup instructions at [`docs/Setup.md`](https://github.com/tervay/EasyPath/blob/master/docs/Setup.md)
 to learn more about how to set it up on your robot. There are also docs on tuning the P loop and
