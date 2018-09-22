@@ -5,11 +5,12 @@ online -- search how to add JARs to Eclipse/VS Code/IntelliJ/etc), setting it up
 
 You have to provide EasyPath a few different things in order for it to work:
 
-1. A function to set the left and right speeds of your drive train
-2. A function that gives EasyPath the total inches traveled of your robot
-3. A function that gives EasyPath the current heading of your robot, from 0 to 360
-4. A function that resets your encoders to zero and the gyro heading of your robot to zero
-5. A P value for the P loop that EasyPath uses in order to control your robot
+1. The drive train subsystem itself
+2. A function to set the left and right speeds of your drive train
+3. A function that gives EasyPath the total inches traveled of your robot
+4. A function that gives EasyPath the current heading of your robot, from 0 to 360
+5. A function that resets your encoders to zero and the gyro heading of your robot to zero
+6. A P value for the P loop that EasyPath uses in order to control your robot
 
 In the future, I hope to allow the user to provide a function that allows EasyPath to shift your
 drive train. There is the code to allow you to do this at the moment, however, it won't shift, as
@@ -18,7 +19,7 @@ the shifting logic has not been implemented. (Sorry! Future release.)
 Assume you have a DriveTrain class that looks something like this:
 
 ```java
-class DriveTrain {
+class DriveTrain extends Subsystem {
 
   private Motor left, right;
   Encoder leftEnc, rightEnc;
@@ -54,6 +55,7 @@ class Robot extends TimedRobot {
   public void robotInit() {
     DriveTrain dt = new DriveTrain();
     EasyPathConfig config = new EasyPathConfig(
+        dt, // the subsystem itself
         dt::setLeftRightSpeeds, // function to set left/right speeds
         // function to give EasyPath the length driven
         () -> PathUtil.defaultLengthDrivenEstimator(dt.leftEnc::getInches, dt.rightEnc::getInches),
@@ -73,6 +75,15 @@ class Robot extends TimedRobot {
   }
 }
 ```
+
+The `::` syntax represents a function reference -- it allows you to pass a function as an argument
+to another function. Please note that the methods you provide **must** take the same exact arguments
+and return the exact same thing as noted in the example above, specifically:
+
+* The set left / right speeds function must take 2 `double`s and return nothing
+* The distance traveled function must take no arguments and return a double
+* The get angle function must take no arguments and return a double
+* The reset function must take no arguments and return nothing
 
 It's as easy as that - around five lines of code.
 
