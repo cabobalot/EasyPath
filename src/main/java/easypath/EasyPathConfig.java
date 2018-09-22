@@ -1,3 +1,5 @@
+package easypath;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;

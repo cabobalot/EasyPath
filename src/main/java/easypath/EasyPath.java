@@ -1,3 +1,5 @@
+package easypath;
+
 public class EasyPath {
 
   private static final EasyPath instance = new EasyPath();

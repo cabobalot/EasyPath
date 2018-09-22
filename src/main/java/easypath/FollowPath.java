@@ -1,3 +1,5 @@
+package easypath;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 import java.util.function.Function;

@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
+import easypath.Path;
+import easypath.PathUtil;
 import org.junit.Test;
 
 public class PathTest {
