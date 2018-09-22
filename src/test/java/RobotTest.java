@@ -1,3 +1,8 @@
+import easypath.EasyPath;
+import easypath.EasyPathConfig;
+import easypath.FollowPath;
+import easypath.Path;
+import easypath.PathUtil;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.junit.Test;
 
