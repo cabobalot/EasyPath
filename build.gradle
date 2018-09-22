@@ -36,14 +36,4 @@ test {
     }
 }
 
-version = '0.4-alpha'
-// Create a JAR file with all dependencies
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title': 'EasyPath JAR',
-                'Implementation-Version': version
-    }
-    baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
+version = '0.5-alpha'
