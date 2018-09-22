@@ -1,3 +1,4 @@
+import edu.wpi.first.wpilibj.command.Subsystem;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
@@ -8,6 +9,7 @@ public class EasyPathConfig {
   private Supplier<Double> getCurrentAngleFunction;
   private Runnable shiftDriveTrainFunction;
   private Runnable resetEncodersFunction;
+  private Subsystem subsystem;
   private double kP;
 
   private boolean swapTurningDirection;
@@ -18,6 +20,7 @@ public class EasyPathConfig {
    * reference functions as a Java parameter/argument, please see the example code that is linked in
    * the readme of the project on GitHub.
    *
+   * @param subsystem The subsystem that requires(..) will be called on in the FollowPath command.
    * @param setLeftRightDriveSpeedFunction the function that sets the left and right drive train
    * speeds; takes in two doubles for arguments and returns nothing
    * @param getInchesTraveledFunction the function that returns a double that represents the total
@@ -33,13 +36,15 @@ public class EasyPathConfig {
    * readme for more details on tuning.
    */
   public EasyPathConfig(
+      Subsystem subsystem,
       BiConsumer<Double, Double> setLeftRightDriveSpeedFunction,
       Supplier<Double> getInchesTraveledFunction,
       Supplier<Double> getCurrentAngleFunction,
       Runnable resetEncodersAndGyroFunction,
       double kP
   ) {
-    this(setLeftRightDriveSpeedFunction, getInchesTraveledFunction, getCurrentAngleFunction,
+    this(subsystem, setLeftRightDriveSpeedFunction, getInchesTraveledFunction,
+        getCurrentAngleFunction,
         resetEncodersAndGyroFunction, () -> {
         }, kP);
   }
@@ -49,6 +54,7 @@ public class EasyPathConfig {
    * reference functions as a Java parameter/argument, please see the example code that is linked in
    * the readme of the project on GitHub.
    *
+   * @param subsystem The subsystem that requires(..) will be called on in the FollowPath command.
    * @param setLeftRightDriveSpeedFunction the function that sets the left and right drive train
    * speeds; takes in two doubles for arguments and returns nothing
    * @param getInchesTraveledFunction the function that returns a double that represents the total
@@ -66,6 +72,7 @@ public class EasyPathConfig {
    * readme for more details on tuning.
    */
   public EasyPathConfig(
+      Subsystem subsystem,
       BiConsumer<Double, Double> setLeftRightDriveSpeedFunction,
       Supplier<Double> getInchesTraveledFunction,
       Supplier<Double> getCurrentAngleFunction,
@@ -166,4 +173,12 @@ public class EasyPathConfig {
     return swapDrivingDirection;
   }
 
+  /**
+   * Getter for subsystem that uses the path.
+   *
+   * @return the subsystem object that requires(...) will be called on.
+   */
+  public Subsystem getSubsystem() {
+    return subsystem;
+  }
 }

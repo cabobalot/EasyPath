@@ -85,6 +85,7 @@ public class FollowPath extends Command {
     this.speedFunction = speedFunction;
     this.shiftAt = shiftAt;
     this.shifted = false;
+    requires(EasyPath.getConfig().getSubsystem());
   }
 
   /**

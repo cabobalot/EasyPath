@@ -1,3 +1,4 @@
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.junit.Test;
 
 class Motor {
@@ -35,7 +36,7 @@ class Gyro {
   }
 }
 
-class DriveTrain {
+class DriveTrain extends Subsystem {
 
   private Motor left, right;
   Encoder leftEnc, rightEnc;
@@ -49,6 +50,11 @@ class DriveTrain {
     gyro = new Gyro();
   }
 
+  @Override
+  protected void initDefaultCommand() {
+
+  }
+
   void setLeftRightSpeeds(double left, double right) {
     this.left.set(left);
     this.right.set(right);
@@ -59,6 +65,11 @@ class DriveTrain {
     this.rightEnc.reset();
     this.gyro.reset();
   }
+
+  @Override
+  public void setName(String subsystem, String name) {
+
+  }
 }
 
 public class RobotTest {
@@ -67,6 +78,7 @@ public class RobotTest {
   public void testRobotSetup() {
     DriveTrain dt = new DriveTrain();
     EasyPathConfig config = new EasyPathConfig(
+        dt,
         dt::setLeftRightSpeeds,
         () -> PathUtil.defaultLengthDrivenEstimator(dt.leftEnc::getInches, dt.rightEnc::getInches),
         dt.gyro::getAngle,
