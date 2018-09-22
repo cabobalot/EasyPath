@@ -36,7 +36,7 @@ test {
     }
 }
 
-version = '0.3-alpha'
+version = '0.4-alpha'
 // Create a JAR file with all dependencies
 task fatJar(type: Jar) {
     manifest {
