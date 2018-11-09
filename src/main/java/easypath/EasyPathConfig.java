@@ -88,6 +88,7 @@ public class EasyPathConfig {
     this.shiftDriveTrainFunction = shiftDriveTrainFunction;
     this.resetEncodersFunction = resetEncodersAndGyroFunction;
     this.kP = kP;
+    this.subsystem = subsystem;
   }
 
   /**
