@@ -165,11 +165,17 @@ public class FollowPath extends Command {
       shifted = true;
     }
 
+    double leftSpeed, rightSpeed;
+
+    // quick disclaimer
+    // Not 100% why this if statement is necessary
+    // Sometimes it doesn't work if you exclude it...
+    // Basically just says "drive straight for 3 inches then start turning"
+    // will do further testing soon-ish...
     if (Math.abs(config.getGetInchesTraveledFunction().get()) > 3) {
       double leftVariation = error * Math.abs(speed) * config.getkP();
       double rightVariation = error * Math.abs(speed) * config.getkP();
 
-      double leftSpeed, rightSpeed;
       if (config.isSwapTurningDirection()) {
         leftSpeed = speed - leftVariation;
         rightSpeed = speed + rightVariation;
@@ -178,15 +184,17 @@ public class FollowPath extends Command {
         rightSpeed = speed - rightVariation;
       }
 
-      if (config.isSwapDrivingDirection()) {
-        leftSpeed *= -1;
-        rightSpeed *= -1;
-      }
-
-      config.getSetLeftRightDriveSpeedFunction().accept(leftSpeed, rightSpeed);
     } else {
-      config.getSetLeftRightDriveSpeedFunction().accept(speed, speed);
+      leftSpeed = speed;
+      rightSpeed = speed;
     }
+
+    if (config.isSwapDrivingDirection()) {
+      leftSpeed *= -1;
+      rightSpeed *= -1;
+    }
+
+    config.getSetLeftRightDriveSpeedFunction().accept(leftSpeed, rightSpeed);
   }
 
   /**
